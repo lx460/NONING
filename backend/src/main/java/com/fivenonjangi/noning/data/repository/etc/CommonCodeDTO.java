@@ -1,6 +1,6 @@
-package com.fivenonjangi.noning.data;
+package com.fivenonjangi.noning.data.repository.etc;
 
-import com.fivenonjangi.noning.data.entity.CommonCode;
+import com.fivenonjangi.noning.data.entity.etc.CommonCode;
 import lombok.*;
 
 @Getter

@@ -1,4 +1,4 @@
-package com.fivenonjangi.noning.service;
+package com.fivenonjangi.noning.service.etc;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.javamail.JavaMailSender;

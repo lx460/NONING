@@ -1,4 +1,4 @@
-package com.fivenonjangi.noning.service;
+package com.fivenonjangi.noning.service.comment;
 
 import com.fivenonjangi.noning.data.dto.comment.CommentRequestDTO;
 import com.fivenonjangi.noning.data.dto.comment.CommentResponseDTO;

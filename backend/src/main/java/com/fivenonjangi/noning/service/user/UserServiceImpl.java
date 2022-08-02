@@ -1,4 +1,4 @@
-package com.fivenonjangi.noning.service;
+package com.fivenonjangi.noning.service.user;
 
 import com.fivenonjangi.noning.data.dto.user.*;
 import com.fivenonjangi.noning.data.entity.etc.VerifyingToken;
@@ -8,6 +8,7 @@ import com.fivenonjangi.noning.data.repository.board.BoardVoteRepositoryCustom;
 import com.fivenonjangi.noning.data.repository.user.UserDataRepository;
 import com.fivenonjangi.noning.data.repository.user.UserRepository;
 import com.fivenonjangi.noning.data.repository.etc.VerifyingTokenRepository;
+import com.fivenonjangi.noning.service.etc.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

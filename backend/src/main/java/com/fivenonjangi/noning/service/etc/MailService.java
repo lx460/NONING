@@ -1,4 +1,4 @@
-package com.fivenonjangi.noning.service;
+package com.fivenonjangi.noning.service.etc;
 
 public interface MailService {
     void sendVerifyMail(String email, String token) throws Exception;

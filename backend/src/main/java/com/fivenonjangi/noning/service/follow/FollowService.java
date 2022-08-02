@@ -1,4 +1,4 @@
-package com.fivenonjangi.noning.service;
+package com.fivenonjangi.noning.service.follow;
 
 import com.fivenonjangi.noning.data.dto.user.UserDTO;
 

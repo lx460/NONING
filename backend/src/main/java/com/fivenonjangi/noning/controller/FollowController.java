@@ -3,7 +3,7 @@ package com.fivenonjangi.noning.controller;
 import com.fivenonjangi.noning.config.security.JwtTokenProvider;
 import com.fivenonjangi.noning.data.dto.follow.FollowRequestDto;
 import com.fivenonjangi.noning.data.dto.user.UserDTO;
-import com.fivenonjangi.noning.service.FollowService;
+import com.fivenonjangi.noning.service.follow.FollowService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

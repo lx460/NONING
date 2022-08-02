@@ -1,4 +1,4 @@
-package com.fivenonjangi.noning.data.entity;
+package com.fivenonjangi.noning.data.entity.etc;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.fivenonjangi.noning.service;
+package com.fivenonjangi.noning.service.user;
 
 import com.fivenonjangi.noning.data.entity.user.UserData;
 import lombok.RequiredArgsConstructor;
