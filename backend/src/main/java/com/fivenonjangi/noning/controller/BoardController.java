@@ -60,6 +60,15 @@ public class BoardController {
         return new ResponseEntity<>(boardResponseDTOList, HttpStatus.OK);
     }
 
+    @GetMapping("/list/random")
+    public ResponseEntity getBoardRandomList(HttpServletRequest request){
+        long userId = Long.parseLong(jwtTokenProvider.getUserPk(request.getHeader("ACCESSTOKEN")));
+        List<BoardResponseDTO> boardResponseDTOList = boardService.getBoardList(userId, "0");
+
+
+        return null;
+    }
+
     @GetMapping("/{boardid}")
     public ResponseEntity getBoardDetail(HttpServletRequest request, @PathVariable("boardid") long boardId){
         long userId = Long.parseLong(jwtTokenProvider.getUserPk(request.getHeader("ACCESSTOKEN")));
