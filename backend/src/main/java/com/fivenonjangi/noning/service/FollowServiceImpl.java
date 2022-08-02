@@ -2,14 +2,12 @@ package com.fivenonjangi.noning.service;
 
 import com.fivenonjangi.noning.data.dto.user.UserDTO;
 import com.fivenonjangi.noning.data.entity.user.Follow;
-import com.fivenonjangi.noning.data.repository.FollowRepository;
-import com.fivenonjangi.noning.data.repository.FollowRepositoryCustom;
+import com.fivenonjangi.noning.data.repository.follow.FollowRepository;
+import com.fivenonjangi.noning.data.repository.follow.FollowRepositoryCustom;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service

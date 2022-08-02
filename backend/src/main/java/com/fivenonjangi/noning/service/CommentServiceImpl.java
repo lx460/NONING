@@ -7,7 +7,12 @@ import com.fivenonjangi.noning.data.entity.comment.Comment;
 import com.fivenonjangi.noning.data.entity.comment.CommentData;
 import com.fivenonjangi.noning.data.entity.comment.CommentLike;
 import com.fivenonjangi.noning.data.entity.user.User;
-import com.fivenonjangi.noning.data.repository.*;
+import com.fivenonjangi.noning.data.repository.board.BoardRepository;
+import com.fivenonjangi.noning.data.repository.comment.CommentDataRepository;
+import com.fivenonjangi.noning.data.repository.comment.CommentLikeRepository;
+import com.fivenonjangi.noning.data.repository.comment.CommentRepository;
+import com.fivenonjangi.noning.data.repository.comment.CommentRepositoryCustom;
+import com.fivenonjangi.noning.data.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

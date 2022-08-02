@@ -1,9 +1,8 @@
-package com.fivenonjangi.noning.data.repository;
+package com.fivenonjangi.noning.data.repository.follow;
 
 import com.fivenonjangi.noning.data.dto.user.UserDTO;
 import com.fivenonjangi.noning.data.entity.user.QFollow;
 import com.fivenonjangi.noning.data.entity.user.QUserData;
-import com.fivenonjangi.noning.data.entity.user.User;
 import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.stereotype.Repository;

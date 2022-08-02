@@ -4,12 +4,11 @@ import com.fivenonjangi.noning.data.dto.user.*;
 import com.fivenonjangi.noning.data.entity.etc.VerifyingToken;
 import com.fivenonjangi.noning.data.entity.user.User;
 import com.fivenonjangi.noning.data.entity.user.UserData;
-import com.fivenonjangi.noning.data.repository.BoardVoteRepositoryCustom;
-import com.fivenonjangi.noning.data.repository.UserDataRepository;
-import com.fivenonjangi.noning.data.repository.UserRepository;
-import com.fivenonjangi.noning.data.repository.VerifyingTokenRepository;
+import com.fivenonjangi.noning.data.repository.board.BoardVoteRepositoryCustom;
+import com.fivenonjangi.noning.data.repository.user.UserDataRepository;
+import com.fivenonjangi.noning.data.repository.user.UserRepository;
+import com.fivenonjangi.noning.data.repository.etc.VerifyingTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

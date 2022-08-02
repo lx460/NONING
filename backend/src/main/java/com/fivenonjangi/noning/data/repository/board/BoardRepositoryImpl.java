@@ -1,4 +1,4 @@
-package com.fivenonjangi.noning.data.repository;
+package com.fivenonjangi.noning.data.repository.board;
 
 import com.fivenonjangi.noning.data.dto.board.BoardResponseDTO;
 import com.fivenonjangi.noning.data.entity.board.QBoard;

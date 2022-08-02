@@ -1,6 +1,5 @@
-package com.fivenonjangi.noning.data.repository;
+package com.fivenonjangi.noning.data.repository.comment;
 
-import com.fivenonjangi.noning.data.dto.board.BoardResponseDTO;
 import com.fivenonjangi.noning.data.dto.comment.CommentResponseDTO;
 import com.fivenonjangi.noning.data.entity.board.QBoardVote;
 import com.fivenonjangi.noning.data.entity.comment.QComment;

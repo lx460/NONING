@@ -1,4 +1,4 @@
-package com.fivenonjangi.noning.data.repository;
+package com.fivenonjangi.noning.data.repository.follow;
 
 import com.fivenonjangi.noning.data.dto.user.UserDTO;
 

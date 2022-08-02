@@ -7,9 +7,9 @@ import com.fivenonjangi.noning.data.entity.board.BoardData;
 import com.fivenonjangi.noning.data.entity.board.BoardLike;
 import com.fivenonjangi.noning.data.entity.board.BoardVote;
 import com.fivenonjangi.noning.data.entity.user.User;
-import com.fivenonjangi.noning.data.repository.*;
+import com.fivenonjangi.noning.data.repository.board.*;
+import com.fivenonjangi.noning.data.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

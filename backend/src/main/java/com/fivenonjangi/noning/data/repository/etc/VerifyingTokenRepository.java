@@ -1,4 +1,4 @@
-package com.fivenonjangi.noning.data.repository;
+package com.fivenonjangi.noning.data.repository.etc;
 
 import com.fivenonjangi.noning.data.entity.etc.VerifyingToken;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,4 +1,4 @@
-package com.fivenonjangi.noning.data.repository;
+package com.fivenonjangi.noning.data.repository.comment;
 
 import com.fivenonjangi.noning.data.entity.board.Board;
 import com.fivenonjangi.noning.data.entity.comment.Comment;
