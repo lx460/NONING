@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import {Avatar} from '@rneui/themed';
 import Icon from 'react-native-vector-icons/AntDesign';
 import CommentModal from './CommnetModal';
 import axios from 'axios';
+import UseAxios from '../../util/UseAxios';
+import UserContext from '../../util/UserContext';
 
 function CommentItem({
   commentData,
@@ -12,47 +14,69 @@ function CommentItem({
   setCommentIsopened,
   isReply,
 }) {
-  const likeAxios = (code, setter, likeCheck) => {
-    axios({
-      url: `http://i7a202.p.ssafy.io:9999/api/boards/${boardid}/comments/${commentData.id}/${likeCheck}/${code}`,
-      method: 'PUT',
-    })
+  // 참여자들에 대한 정보를 가져와서 writerId,userId를 매칭시켜 가져와서 뿌려줘야함...
+  const {boardId} = useContext(UserContext);
+  const currentBoard = boardId;
+  const currentCommentId = commentData.commentId;
+  console.log(commentData);
+  console.log('현재 보드 : ' + currentBoard);
+  console.log('댓글 아이디 : ' + currentCommentId);
+  const likeAxios = (setter, likeCheck) => {
+    UseAxios.put(
+      `/boards/${currentBoard}/comments/${currentCommentId}/${likeCheck}`,
+    )
       .then(res => {
         console.log(res);
-        alert('성공');
-        setter;
+        setter();
       })
       .catch(err => {
         console.log(err);
-        alert('실패');
       });
   };
+  // /api/boards/{boardid}/users
+  // const likeAxios = (code, setter, likeCheck) => {
+  //   axios({
+  //     url: `http://i7a202.p.ssafy.io:9999/api/boards/${boardid}/comments/${commentData.id}/${likeCheck}/${code}`,
+  //     method: 'PUT',
+  //   })
+  //     .then(res => {
+  //       console.log(res);
+  //       alert('성공');
+  //       setter;
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //       alert('실패');
+  //     });
+  // };
 
   const setLikeData = () => {
     setCommentData(commentData => ({
       ...commentData,
-      like: !commentData.like,
-      dislike: commentData.dislike ? !commentData.dislike : commentData.dislike,
-      userLike: commentData.like
-        ? commentData.userLike - 1
-        : commentData.userLike + 1,
-      userDislike: commentData.dislike
-        ? commentData.userDislike - 1
+      userLike: !commentData.userLike,
+      userDislike: commentData.userDislike
+        ? !commentData.userDislike
         : commentData.userDislike,
+      likes: commentData.userLike
+        ? commentData.likes - 1
+        : commentData.likes + 1,
+      dislikes: commentData.userDislike
+        ? commentData.dislikes - 1
+        : commentData.dislikes,
     }));
   };
 
   const setdisLikeData = () => {
     setCommentData(commentData => ({
       ...commentData,
-      like: commentData.like ? !commentData.like : commentData.like,
-      dislike: !commentData.dislike,
-      userLike: commentData.like
-        ? commentData.userLike - 1
+      userLike: commentData.userLike
+        ? !commentData.userLike
         : commentData.userLike,
-      userDislike: commentData.dislike
-        ? commentData.userDislike - 1
-        : commentData.userDislike + 1,
+      userDislike: !commentData.userDislike,
+      likes: commentData.userLike ? commentData.likes - 1 : commentData.likes,
+      dislikes: commentData.userDislike
+        ? commentData.dislikes - 1
+        : commentData.dislikes + 1,
     }));
   };
 
@@ -61,25 +85,25 @@ function CommentItem({
       case 'like':
         switch (start) {
           case false:
-            switch (commentData.dislike) {
+            switch (commentData.userDislike) {
               case false:
                 setLikeData();
-                // likeAxios(0, setLikeData, likeCheck); 중립->좋아요
+                likeAxios(setLikeData, likeCheck); //중립->좋아요
                 console.log(0);
                 console.log(commentData);
                 break;
               case true:
-                setLikeData();
-                // likeAxios(1, setLikeData, likeCheck); 싫어요->좋아요
-                console.log(1);
-                console.log(commentData);
-                break;
-            }
-            break;
+                                                                            setLikeData();`
+                                                                            likeAxios(setLikeData, likeCheck); //싫어요->좋아요
+                                                                            console.log(1);
+                                                                            console.log(commentData);
+                                                                            break;
+                                                                        }
+                                                                        break;`
           case true:
             setLikeData();
-            // likeAxios(2, setLikeData); 좋아요->좋아요
-            console.log(2);
+            likeAxios(setLikeData); // 좋아요->좋아요
+            // console.log(2);
             console.log(commentData);
             break;
         }
@@ -87,16 +111,16 @@ function CommentItem({
       case 'dislike':
         switch (start) {
           case false:
-            switch (commentData.like) {
+            switch (commentData.userLike) {
               case false:
                 setdisLikeData();
-                // likeAxios(0, setLikeData, likeCheck); 중립->좋아요
+                likeAxios(setLikeData, likeCheck); //중립->좋아요
                 console.log(0);
                 console.log(commentData);
                 break;
               case true:
                 setdisLikeData();
-                // likeAxios(1, setLikeData, likeCheck); 싫어요->좋아요
+                likeAxios(setLikeData, likeCheck); // 싫어요->좋아요
                 console.log(1);
                 console.log(commentData);
                 break;
@@ -104,7 +128,7 @@ function CommentItem({
             break;
           case true:
             setdisLikeData();
-            // likeAxios(2, setLikeData); 좋아요->좋아요
+            likeAxios(setLikeData); // 좋아요->좋아요
             console.log(2);
             console.log(commentData);
             break;
@@ -127,7 +151,7 @@ function CommentItem({
       </View>
       <View style={commentStyles(isReply).secondContainer}>
         <View>
-          <Text style={styles.nickNameText}>{commentData.nickname}</Text>
+          <Text style={styles.nickNameText}>{commentData.writerId}</Text>
         </View>
         <View>
           <Text style={styles.contentText}>{commentData.content}</Text>
@@ -135,27 +159,27 @@ function CommentItem({
         <View style={{flexDirection: 'row'}}>
           <TouchableOpacity
             style={{paddingTop: '1.5%', marginRight: '1%'}}
-            onPress={() => likeOnPress(commentData.like, 'like')}>
-            {commentData.like ? (
+            onPress={() => likeOnPress(commentData.userLike, 'like')}>
+            {commentData.userLike ? (
               <Icon name="like1" color="#FF5F5F" size={11} />
             ) : (
               <Icon name="like2" color="#808080" size={11} />
             )}
           </TouchableOpacity>
           <Text style={{fontSize: 12, color: 'black'}}>
-            {commentData.userLike}
+            {commentData.likes}
           </Text>
           <TouchableOpacity
             style={{paddingTop: '1.5%', marginRight: '1%', marginLeft: '3%'}}
-            onPress={() => likeOnPress(commentData.dislike, 'dislike')}>
-            {commentData.dislike ? (
+            onPress={() => likeOnPress(commentData.userDislike, 'dislike')}>
+            {commentData.userDislike ? (
               <Icon name="dislike1" color="#49D3CA" size={11} />
             ) : (
               <Icon name="dislike2" color="#808080" size={11} />
             )}
           </TouchableOpacity>
           <Text style={{fontSize: 12, color: 'black'}}>
-            {commentData.userDislike}
+            {commentData.dislikes}
           </Text>
           {isReply ? (
             ''

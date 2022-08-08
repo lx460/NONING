@@ -7,6 +7,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function App() {
   const [userData, setUserData] = useState({});
+  const [boardUserData, setBoardUserData] = useState([]);
+  const [boardId, setBoardId] = useState(0);
   useEffect(() => {
     const getData = async () => {
       const value = await AsyncStorage.getItem('userdata');
@@ -17,7 +19,15 @@ export default function App() {
   }, []);
 
   return (
-    <UserContext.Provider value={{userData, setUserData}}>
+    <UserContext.Provider
+      value={{
+        userData,
+        setUserData,
+        boardUserData,
+        setBoardUserData,
+        boardId,
+        setBoardId,
+      }}>
       <NavigationContainer>
         <BottomTabsNav />
       </NavigationContainer>

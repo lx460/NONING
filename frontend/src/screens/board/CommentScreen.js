@@ -1,22 +1,39 @@
-import React, {useState, useEffect} from 'react';
+import {useIsFocused} from '@react-navigation/native';
+import React, {useState, useEffect, useContext} from 'react';
 import {View, StyleSheet, FlatList, TextInput} from 'react-native';
 import CommentList from '../../components/boardDetail/CommentList';
 import CommentTestData from '../../components/boardDetail/CommentTestData';
+import UseAxios from '../../util/UseAxios';
+import UserContext from '../../util/UserContext';
 
-function CommentScreen() {
+function CommentScreen({navigation, boardId}) {
+  const isFocused = useIsFocused();
   const [comments, setComments] = useState([]);
+  const {setBoardUserData, setBoardId} = useContext(UserContext);
+  console.log('Comment Screen : ' + boardId);
   useEffect(() => {
-    setComments(CommentTestData);
+    UseAxios.get(`/boards/${boardId}/comments/list`).then(res => {
+      setComments(res.data);
+    });
+  }, [isFocused]);
+
+  useEffect(() => {
+    UseAxios.get(`/boards/${boardId}/users`).then(res => {
+      setBoardUserData(res.data);
+      setBoardId(boardId);
+    });
   }, []);
 
-  const renderItem = ({item}) => <CommentList comment={item} />;
+  const renderItem = ({item}) => (
+    <CommentList comment={item} boardId={boardId} />
+  );
 
   return (
     <View style={styles.scene}>
       <FlatList
         data={comments}
         renderItem={renderItem}
-        keyExtractor={comment => comment.id}
+        keyExtractor={item => item.commentId}
       />
       <TextInput></TextInput>
     </View>

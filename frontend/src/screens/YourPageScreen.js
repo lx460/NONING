@@ -94,7 +94,9 @@ export default function YourPageScreen({route, navigation}) {
   useEffect(() => {
     UseAxios.get(`/users/${id}/page`).then(res => {
       setYourPageData(res.data);
-      console.log('데이터 ---------------------------------------- : \n' + res.data);
+      console.log(
+        '데이터 ---------------------------------------- : \n' + res.data,
+      );
     });
   }, [isFocused]);
 
@@ -138,8 +140,6 @@ export default function YourPageScreen({route, navigation}) {
       followerIdList: yourPageData.followerIdList.filter(e => e !== myId),
     });
   };
-  console.log(yourPageData.followerIdList);
-  console.log(userData.userId);
   return (
     <View style={styles.container}>
       {id === userData.userId ? (

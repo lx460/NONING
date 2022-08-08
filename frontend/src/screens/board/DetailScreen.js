@@ -48,18 +48,28 @@ const renderTabBar = props => (
 
 const initialLayout = {width: Dimensions.get('window').width};
 
-const renderScene = SceneMap({
-  0: CommentScreen,
-  1: AnalysisScreen,
-});
-
-export default function DetailScreen({route}) {
-  console.log(route.params.boardId);
+export default function DetailScreen({navigation, route}) {
+  const boardId = route.params.boardId; // 현재 페이지 . api를 통해 데이터를 가져와야한다.
+  // /api/boards/{boardId} : 게시글
+  // /api/boards/{boardId}/comments/list : 댓글창
+  // 더보기 -> /api/boards/{boardId}/comments/{commentId}/list : 대댓글 불러오기
+  // /api/boards/{boardId}/comments/{commentId}/ like, dislike
   const [index, setIndex] = useState(0);
   const [routes] = useState([
     {key: 0, title: '댓글'},
     {key: 1, title: '분석'},
   ]);
+
+  const renderScene = ({route}) => {
+    switch (route.key) {
+      case 0:
+        return <CommentScreen navigation={navigation} boardId={boardId} />;
+      case 1:
+        return <AnalysisScreen navigation={navigation} boardID={boardId} />;
+      default:
+        return null;
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={{flex: 2.4, borderWidth: 2}}>

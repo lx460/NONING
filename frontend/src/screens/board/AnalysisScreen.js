@@ -5,7 +5,7 @@ import AnalysisDefault from '../../components/boardDetail/AnalysisDefault';
 import AnalysisKeyData from '../../components/boardDetail/AnalysisKeyData';
 import AnalysisList from '../../components/boardDetail/AnalysisList';
 
-function AnalysisScreen() {
+function AnalysisScreen({navigation, boardId}) {
   const [data, setData] = useState([]);
   const [analysisData, setAnalysisData] = useState([]);
   const idx = useRef(0);
